@@ -1,0 +1,9 @@
+matplotlib
+numpy
+scipy
+smopy
+pandas
+shapely
+geopandas
+geovoronoi
+networkx
