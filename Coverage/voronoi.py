@@ -137,7 +137,7 @@ def main():
 
     area_shape = Polygon(ext, [grint, int])
 
-    coords = np.random.randint(1, 12, size=(40, 2))
+    coords = np.random.randint(1, 12, size=(3, 2))
     print(coords)
 
     points = []
@@ -149,14 +149,7 @@ def main():
     #points = [point for point in coords if area_shape.contains(Point(point)) is True]
     print("points:")
 
-    print(area_shape)
-    #area_shape = area.iloc[0].geometry
 
-    world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-    area = world[world.name == 'Italy']
-
-    area = area.to_crs(epsg=3395)  # convert to World Mercator CRS
-    #area_shape = area.iloc[0].geometry  # get the Polygon
     print(area_shape)
 
     vor = spatial.Voronoi(points)
@@ -165,10 +158,11 @@ def main():
 
     poly_shapes, pts, poly_to_pt_assignment = voronoi_regions_from_coords(points, area_shape)
 
-    print(dir(poly_shapes))
+    print(type(poly_shapes))
     print(dir(pts))
     print(poly_to_pt_assignment)
     fig, ax = subplot_for_map()
+    plt.figure(dpi=96, figsize=(20 / 96, 20 / 96))
     plot_voronoi_polys_with_points_in_area(ax, area_shape, poly_shapes, points, poly_to_pt_assignment)
 
     polygons = []
@@ -201,8 +195,14 @@ def main():
 #            cells, facecolors=colors,
 #            edgecolors='k', alpha=.35))
 #
-    plt.show()
+
+
 
 
 if __name__ == '__main__':
     main()
+    N = 25
+    my_dpi = 96
+    plt.figure(dpi=96, figsize=(20 / 96, 20 / 96))
+    plt.gcf().set_size_inches(20/96, 20/96)
+    plt.show()

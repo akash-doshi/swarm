@@ -30,8 +30,8 @@ vals=labels.values()
 inds=[(N-j-1,N-i-1) for i,j in inds]
 pos2=dict(zip(vals, inds))
 
-nx.draw_networkx(G, pos=pos2, with_labels=False, node_size = 25)
+#nx.draw_networkx(G, pos=pos2, with_labels=False, node_size = 25)
 T=nx.minimum_spanning_tree(G, algorithm='prim') #kruskal #boruvka
-plt.figure()
+#   plt.figure(dpi=96, figsize=(N/96,N/96))
 nx.draw_networkx(T, pos=pos2, with_labels=False, node_size = 25)
 plt.show()
